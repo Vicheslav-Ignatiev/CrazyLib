@@ -1,0 +1,9 @@
+.app {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}

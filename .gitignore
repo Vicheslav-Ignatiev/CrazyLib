@@ -1,0 +1,19 @@
+# ===== Python / Django =====
+__pycache__/
+*.pyc
+.env
+.env.*
+db.sqlite3
+venv/
+
+# ===== Node / React =====
+node_modules/
+dist/
+build/
+
+# ===== IDE =====
+.idea/
+.vscode/
+
+# ===== OS =====
+.DS_Store

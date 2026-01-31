@@ -1,0 +1,30 @@
+[
+    {
+        "Book": {
+          "LiteraryCreation": {
+            "Author": {
+              "Name": null
+            },
+            "Title": "Beautiful Player (Beautiful Bastard, #3)",
+            "Description": "A bombshell bookworm. A chronic Casanova. And a lesson in chemistry too scandalous for school.<br /><br />When Hanna Bergstrom receives a lecture from her overprotective brother about neglecting her social life and burying herself in grad school, she’s determined to tackle his implied assignment: get out, make friends, start dating. And who better to turn her into the sultry siren every man wants than her brother’s gorgeous best friend, Will Sumner, venture capitalist and unapologetic playboy?<br /><br />Will takes risks for a living, but he’s skeptical about this challenge of Hanna’s…until the wild night his innocently seductive pupil tempts him into bed- and teaches him a thing or two about being with a woman he can’t forget. Now that Hanna’s discovered the power of her own sex appeal, it’s up to Will to prove he’s the only man she’ll ever need.",
+            "UniqueID": "a2d6f92c-7777-4c2b-a87a-5f3bb53d58dc"
+          },
+          "PublicationDate": "2013-10-29T00:00:00",
+          "Image_url": "https://images.gr-assets.com/books/1375285002m/17831614.jpg",
+          "LibraryCallNumber": "928b8fa8.c8c2.4b5e.9116.0972b761aecd"
+        },
+        "Customer": {
+          "FirstName": "Guadalupe",
+          "LastName": "Ruddick",
+          "Address": "08 Jackson Place",
+          "City": "at,gleinkerau,Gleinkerau,04,,47.7,14.333333",
+          "Email": "hturmelor@quantcast.com",
+          "PhoneNumber": "055-2147420",
+          "Zip": "919368",
+          "Passport": "5752734",
+          "BirthDate": "1926-09-10T00:00:00+03:00"
+        },
+        "Type": "Borrow",
+        "ActionDateTime": "2022-08-31T10:00:00+03:00"
+      }
+]

@@ -1,0 +1,421 @@
+.search-properties {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.search-properties h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+/* ===== BORROW BOOK FORM ===== */
+
+.borrow-book {
+    padding: 1rem 0;
+}
+
+.borrow-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.input-group {
+    display: flex;
+    gap: 0.75rem;
+    align-items: stretch;
+}
+
+.book-id-input {
+    flex: 1;
+    padding: 0.75rem;
+    background-color: #2a2a2a;
+    color: rgba(255, 255, 255, 0.87);
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.book-id-input:focus {
+    border-color: #646cff;
+}
+
+.book-id-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.search-book-btn {
+    padding: 0.75rem 1.2rem;
+    background-color: #646cff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.search-book-btn:hover:not(:disabled) {
+    background-color: #5a5fd8;
+}
+
+.search-book-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===== ERROR MESSAGE ===== */
+
+.error-message {
+    padding: 0.75rem;
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 6px;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+}
+
+/* ===== BOOK CONFIRMATION ===== */
+
+.book-confirmation {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+.book-info h4 {
+    margin: 0 0 0.75rem 0;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 1rem;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.confirmation-question {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.confirmation-question p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 0.95rem;
+}
+
+.confirmation-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.borrow-confirm-btn {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.borrow-confirm-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #45a049 0%, #388e3c 100%);
+    transform: translateY(-1px);
+}
+
+.borrow-confirm-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.87);
+    border-color: #555;
+}
+
+.cancel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===== TABLE ===== */
+
+.borrowed-table {
+    border: 1px solid #333;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.borrowed-table th,
+.borrowed-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #333;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.87);
+    vertical-align: middle;
+}
+
+/* Header style */
+.borrowed-table th {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Hover row */
+.borrowed-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ===== BOOK NAME COLUMN (2nd column) ===== */
+
+.borrowed-table th:nth-child(2),
+.borrowed-table td:nth-child(2) {
+    max-width: 320px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ===== RETURN BUTTON ===== */
+
+.return-btn {
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.return-btn:hover:not(:disabled) {
+    background-color: #333;
+    color: rgba(255, 255, 255, 0.87);
+    border-color: #555;
+}
+
+.return-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ===== HINT / EMPTY STATES ===== */
+
+.hint {
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+}
+
+.sp-empty {
+    padding: 2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-style: italic;
+}
+
+/* ===== TOP TABS ===== */
+
+.sp-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #333;
+}
+
+.sp-tab {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #333;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    background-color: #1a1a1a;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.sp-tab:hover {
+    background-color: #222;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.sp-tab.active {
+    background-color: #2a2a2a;
+    color: rgba(255, 255, 255, 0.87);
+    border-color: #444;
+}
+
+.sp-content {
+    padding-top: 0.5rem;
+}
+
+/* ===== LIGHT MODE ===== */
+
+@media (prefers-color-scheme: light) {
+    .search-properties {
+        background-color: #f5f5f5;
+        border-color: #ddd;
+    }
+
+    .search-properties h3 {
+        color: #213547;
+    }
+
+    .input-label {
+        color: #213547;
+    }
+
+    .book-id-input {
+        background-color: #ffffff;
+        color: #213547;
+        border-color: #ccc;
+    }
+
+    .book-id-input:focus {
+        border-color: #646cff;
+    }
+
+    .error-message {
+        background-color: rgba(239, 68, 68, 0.05);
+        border-color: rgba(239, 68, 68, 0.2);
+        color: #dc2626;
+    }
+
+    .book-confirmation {
+        background-color: rgba(0, 0, 0, 0.02);
+        border-color: #ddd;
+    }
+
+    .book-info h4 {
+        color: #213547;
+    }
+
+    .book-details {
+        color: rgba(0, 0, 0, 0.75);
+    }
+
+    .confirmation-question p {
+        color: #213547;
+    }
+
+    .cancel-btn {
+        color: rgba(0, 0, 0, 0.6);
+        border-color: #ccc;
+    }
+
+    .cancel-btn:hover:not(:disabled) {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: rgba(0, 0, 0, 0.87);
+        border-color: #aaa;
+    }
+
+    .borrowed-table th,
+    .borrowed-table td {
+        color: #213547;
+        border-bottom-color: #ddd;
+    }
+
+    .borrowed-table th {
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    .borrowed-table tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    .return-btn {
+        background-color: #e0e0e0;
+        border-color: #ccc;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    .return-btn:hover:not(:disabled) {
+        background-color: #d0d0d0;
+        color: rgba(0, 0, 0, 0.87);
+        border-color: #aaa;
+    }
+
+    .hint {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .sp-empty {
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .sp-tabs {
+        border-bottom-color: #ddd;
+    }
+
+    .sp-tab {
+        background-color: #f5f5f5;
+        border-color: #ddd;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    .sp-tab:hover {
+        background-color: #eee;
+        color: #213547;
+    }
+
+    .sp-tab.active {
+        background-color: #ffffff;
+        border-color: #ccc;
+        color: #213547;
+    }
+}
