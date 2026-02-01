@@ -267,6 +267,47 @@ class CustomerViewSet(FirstLetterSearchMixin, viewsets.ModelViewSet):
 
 
 
+    @action(detail=True, methods=['get'])
+    def history(self, request, pk=None):
+        """
+        Complete borrowing history for this customer
+        GET /api/customers/{id}/history/
+        """
+        customer = self.get_object()
+
+        # Get all BORROW events for this customer
+        borrows = LibraryEvent.objects.filter(
+            customer=customer,
+            event_type=LibraryEvent.EventType.BORROW
+        ).select_related('book_copy', 'book_copy__book').order_by('-action_dt')[:50]
+
+        data = []
+        for borrow in borrows:
+            # Find corresponding RELEASE event
+            release = LibraryEvent.objects.filter(
+                book_copy=borrow.book_copy,
+                event_type=LibraryEvent.EventType.RELEASE,
+                action_dt__gt=borrow.action_dt
+            ).first()
+
+            data.append({
+                "borrow_event_id": borrow.id,
+                "borrowed_on": borrow.action_dt,
+                "returned_on": release.action_dt if release else None,
+                "book_id": borrow.book_copy.book.id,
+                "title": borrow.book_copy.book.title,
+                "author": borrow.book_copy.book.author_name,
+                "book_copy_id": borrow.book_copy.id,
+                "status": "returned" if release else "currently borrowed"
+            })
+
+        return Response({
+            "results": data,
+            "count": len(data)
+        })
+
+
+
 class BookViewSet(viewsets.ModelViewSet):
     """
     ViewSet for working with books

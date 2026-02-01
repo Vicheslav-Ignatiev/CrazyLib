@@ -1,0 +1,101 @@
+History
+
+SELECT
+    e.id          AS event_id,
+    e.action_dt   AS borrowed_on,
+    b.id          AS book_id,
+    b.title       AS title,
+    b.author_name AS author,
+    bc.id         AS book_copy_id,
+    bc.call_number AS call_number
+FROM crazyLibApp_libraryevent e
+JOIN crazyLibApp_bookcopy bc ON bc.id = e.book_copy_id
+JOIN crazyLibApp_book b      ON b.id  = bc.book_id
+WHERE e.customer_id = [ENTER ID HERE]
+  AND e.event_type = 'BORROW'
+ORDER BY e.action_dt DESC;
+
+
+
+overdue borrowers (peoples do not return book in 30 days)
+
+SELECT
+    c.id         AS customer_id,
+    c.first_name,
+    c.last_name,
+    c.passport,
+    COUNT(*)     AS overdue_books_count,
+    MIN(e.action_dt) AS earliest_overdue_borrow_dt
+FROM `crazylibapp_libraryevent` e
+JOIN `crazylibapp_customer` c ON c.id = e.customer_id
+WHERE e.event_type = 'BORROW'
+  AND e.action_dt < (NOW() - INTERVAL 30 DAY)
+  AND NOT EXISTS (
+      SELECT 1
+      FROM `crazylibapp_libraryevent` r
+      WHERE r.book_copy_id = e.book_copy_id
+        AND r.customer_id  = e.customer_id
+        AND r.event_type   = 'RELEASE'
+        AND r.action_dt    > e.action_dt
+  )
+GROUP BY c.id, c.first_name, c.last_name, c.passport
+ORDER BY overdue_books_count DESC, earliest_overdue_borrow_dt ASC;
+
+
+100 most borrowed authors/books
+
+SELECT
+    b.id          AS book_id,
+    b.title       AS title,
+    b.author_name AS author,
+    COUNT(*)      AS borrow_count
+FROM crazylibapp_libraryevent e
+JOIN crazylibapp_bookcopy bc ON bc.id = e.book_copy_id
+JOIN crazylibapp_book b      ON b.id  = bc.book_id
+WHERE e.event_type = 'BORROW'
+GROUP BY b.id, b.title, b.author_name
+ORDER BY borrow_count DESC
+LIMIT 100;
+
+
+100 most reading clients
+
+SELECT
+    c.id         AS customer_id,
+    c.first_name,
+    c.last_name,
+    c.passport,
+    COUNT(*)     AS borrow_count
+FROM crazylibapp_libraryevent e
+JOIN crazylibapp_customer c ON c.id = e.customer_id
+WHERE e.event_type = 'BORROW'
+GROUP BY c.id, c.first_name, c.last_name, c.passport
+ORDER BY borrow_count DESC
+LIMIT 100;
+
+
+
+How many books on hands (are not returned)
+
+SELECT
+    COUNT(*) AS books_on_hands
+FROM crazylibapp_libraryevent e
+WHERE e.event_type = 'BORROW'
+  AND NOT EXISTS (
+      SELECT 1
+      FROM crazylibapp_libraryevent r
+      WHERE r.book_copy_id = e.book_copy_id
+        AND r.customer_id  = e.customer_id
+        AND r.event_type   = 'RELEASE'
+        AND r.action_dt    > e.action_dt
+  );
+
+
+
+How many books are borrowed in last 3 months
+
+SELECT
+    COUNT(*) AS borrowed_last_3_months
+FROM crazylibapp_libraryevent e
+WHERE e.event_type = 'BORROW'
+  AND e.action_dt >= (NOW() - INTERVAL 3 MONTH);
