@@ -85,6 +85,9 @@ class LibraryEvent(models.Model):
             models.Index(fields=["customer", "action_dt"]),
             models.Index(fields=["book_copy", "action_dt"]),
             models.Index(fields=["event_type", "action_dt"]),
+
+            models.Index(fields=["customer", "event_type", "action_dt"], name="idx_ev_cust_type_dt"),
+            models.Index(fields=["book_copy", "event_type", "action_dt"], name="idx_ev_copy_type_dt"),
         ]
 
     def __str__(self):
